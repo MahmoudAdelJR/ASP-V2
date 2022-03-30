@@ -1,0 +1,46 @@
+﻿@using ASP_Day4.Models
+@model List<Student>
+<!DOCTYPE html>
+@{ 
+    Layout = null;
+}
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <title>Index</title>
+</head>
+<body>
+    <div class="container">
+        <div class="text-center">
+            @Html.ActionLink("New","create",null,new {@class = "mx-auto btn btn-primary my-3"})
+        </div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>National ID</th>
+                    <th>Grade</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td> @item.name</td>
+                        <td> @item.age</td>
+                        <td> @item.nid</td>
+                        <td> @item.grade</td>
+                        <td>@Html.ActionLink("Update", "update", new { @nid = item.nid })</td>
+                        <td>@Html.ActionLink("Delete", "delete", new { @nid = item.nid })</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>
